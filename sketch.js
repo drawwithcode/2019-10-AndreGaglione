@@ -1,11 +1,16 @@
 var toilet, tp, song, bg;
 
-function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
+function preload(){
   toilet = loadModel("assets/Toilet1.obj", true); // If true, scale the model to a standardized size when loading (normalization)
   tp = loadModel("assets/urinal.obj", true);
   song = loadSound('assets/MusicToilet.mp3');
   bg = loadImage('assets/txtr.jpg');
+
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight, WEBGL);
+
   angleMode(DEGREES);
 
 }
@@ -22,7 +27,7 @@ function draw() {
   let dirX = (mouseX / width - 0.5) * 2;
   let dirY = (mouseY / height - 0.5) * 2;
   directionalLight(250, 250, 250, -dirX, -dirY, -1);
-  rotateZ(180); // in this case, the reference system was different than the one in the sketch, so we had to rotate everything.
+  rotateZ(180);
   rotateY(180);
   model(toilet);
   pop();
